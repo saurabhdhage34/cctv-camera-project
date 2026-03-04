@@ -1,0 +1,12 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./cctvCameraproject",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
+}

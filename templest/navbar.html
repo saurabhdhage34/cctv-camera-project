@@ -1,0 +1,62 @@
+{% load static %}
+
+{% include 'head.html' %}
+
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+    <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <h2 class="m-0 text-primary">CctvCameraProject</h2>
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-4 py-lg-0">
+            <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+            <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+            <a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
+            <a href="{% url 'project' %}" class="nav-item nav-link">Project</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                    <a href="{% url 'feature' %}" class="dropdown-item">Feature</a>
+                    <a href="{% url 'video' %}" class="dropdown-item">Cctv&Video</a>
+                    <a href="{% url 'quote' %}" class="dropdown-item">Free Quote</a>
+                    <a href="{% url 'team' %}" class="dropdown-item">Our Team</a>
+                    <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+
+                </div>
+            </div>
+            <a href="contact.html" class="nav-item nav-link">Contact</a>
+        </div>
+        <a href="{% url 'login' %}" class="logout-btn">
+            LOGOUT <i class="fa fa-arrow-right ms-2"></i>
+        </a>
+</nav>
+<style>
+    .logout-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .logout-btn:hover {
+        background: linear-gradient(45deg, #ff4b2b, #ff416c);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .logout-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .logout-btn:hover i {
+        transform: translateX(5px);
+    }
+</style>

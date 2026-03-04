@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Verification</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h2>Enter Your Mobile Number</h2>
+<input type="text" id="phone" placeholder="Mobile Number">
+<button id="sendOtpBtn">Send OTP</button>
+<p id="sendOtpMsg"></p>
+
+<div id="otpSection" style="display:none;">
+    <h2>Enter OTP</h2>
+    <input type="text" id="otp" placeholder="Enter OTP">
+    <button id="verifyOtpBtn">Verify OTP</button>
+    <p id="verifyOtpMsg"></p>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $("#sendOtpBtn").click(function(){
+        var phone = $("#phone").val();
+        if(phone==""){ alert("Enter phone number"); return; }
+
+        $.ajax({
+            url: "{% url 'send_otp' %}",
+            method: "POST",
+            data: { phone: phone, csrfmiddlewaretoken: '{{ csrf_token }}' },
+            success: function(response){
+                if(response.status=="success"){
+                    $("#sendOtpMsg").text(response.message + " OTP: " + response.otp);
+                    $("#otpSection").show();
+                }else{
+                    $("#sendOtpMsg").text(response.message);
+                }
+            }
+        });
+    });
+
+    $("#verifyOtpBtn").click(function(){
+        var phone = $("#phone").val();
+        var otp = $("#otp").val();
+        if(otp==""){ alert("Enter OTP"); return; }
+
+        $.ajax({
+            url: "{% url 'verify_otp' %}",
+            method: "POST",
+            data: { phone: phone, otp: otp, csrfmiddlewaretoken: '{{ csrf_token }}' },
+            success: function(response){
+                if(response.status=="success"){
+                    $("#verifyOtpMsg").css("color","green").text(response.message);
+                }else{
+                    $("#verifyOtpMsg").css("color","red").text(response.message);
+                }
+            }
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>
