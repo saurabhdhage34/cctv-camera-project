@@ -5,6 +5,10 @@ Django settings for cctvCameraproject project.
 from pathlib import Path
 import os
 
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
