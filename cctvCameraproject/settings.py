@@ -6,8 +6,6 @@ from pathlib import Path
 import os
 
 
-import pymysql
-pymysql.install_as_MySQLdb()
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--x7qow1tugob2)p+2seog#xwq@xj3ju$qvtmgl0=q+0r@e14m+'
 
 DEBUG = False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['cctv-camera-project-2.onrender.com','*']
 
 
 
@@ -60,32 +58,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cctvCameraproject.wsgi.application'
 
-# Database
-# 
-if os.environ.get(''):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cctv_db_ghv2',
+        'USER': 'cctv_user',
+        'PASSWORD': 'wVL3xRSTOzQ3N4lHpgmmtdCm7iWp9TZh',
+        'HOST': 'dpg-d6l72nntskes73ej138g-a',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME':'field_db',
-            'USER': 'root',
-            'PASSWORD': '1234',
-            'HOST': 'localhost',
-            'PORT': '3306',
-        }
-    }
+}
+  
 
 
 
 
 
-# Password validation
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
@@ -109,7 +101,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = True
+
 
 STATIC_URL = '/static/'
 
